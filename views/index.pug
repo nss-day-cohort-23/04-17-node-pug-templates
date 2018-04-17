@@ -1,0 +1,45 @@
+html
+  head
+    meta(charset="utf-8")
+    title "pug demo"
+    include stylesheets.pug
+
+  body
+    h1.homeGreeting#stuff Helloooo, Pug!
+    h2 This is the subtitle: #{subtitle}
+    h2= `this is the other one: ${subtitle}`
+    h3= 2+2
+
+    //- run JS whenever you want
+    - let jsAnywhere = "List some names here"
+
+    .names
+      h3= jsAnywhere
+      ul
+        each name in names
+          li Hello, #{name}
+            button.deleteName delete
+
+    a(class="btn btn-large" href="#")
+    .dropdown
+      .btn.dropdown-toggle.btn-danger( id="dLabel" role="button" data-toggle="dropdown" href="#")
+        |  Dropdown stuff up in here
+        .caret.dropdown-caret
+      ul.dropdown-menu(role="menu" aria-labelledby="dlabel")
+        li
+          a(tabindex="-1" href="#") Action
+        li
+          a(tabindex="-1" href="#") Another action
+        li
+          a(tabindex="-1" href="#") Something else here
+
+    //- include chunks of content with block
+    block content
+      p This is here by default
+
+    script(src="https://code.jquery.com/jquery-3.2.1.min.js"
+			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			  crossorigin="anonymous")
+    script(src="/bootstrap/js/bootstrap.min.js")
+    script(src="/client/front-end.js")
+
